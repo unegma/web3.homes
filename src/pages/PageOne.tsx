@@ -14,8 +14,8 @@ export default function PageOne(): JSX.Element {
   const [submittedForm, setSubmittedForm] = useState(false);
   const apiURL = "https://xwhfqz5y9f.execute-api.eu-west-2.amazonaws.com/live";
 
-  async function submitForm() {
-    const response = await axios.get(apiURL);
+  async function submitForm(data: any) {
+    const response = await axios.post(apiURL, data);
     console.log(response);
     setShowForm(false);
   }
@@ -29,7 +29,7 @@ export default function PageOne(): JSX.Element {
   const onSubmit = (data: any) => {
     setSubmittedForm(true)
     console.log(data);
-    submitForm();
+    submitForm(data);
   };
 
   const SubmissionForm = () => {
