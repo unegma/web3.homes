@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { TextField } from "@material-ui/core";
 import {Button, Input} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import {Link} from "react-router-dom";
 
 
 export default function PageOne(): JSX.Element {
@@ -37,6 +39,13 @@ export default function PageOne(): JSX.Element {
     <section className="container">
       <div>
         <Container maxWidth="sm">
+
+          <Typography className="pageText--body">
+            Please include as much detail as possible, 'The Why' is the most important section.
+            We are happy to get in touch with you if we need any more details.
+            See <Link to="/about" className="enterButton">here for more info.</Link>
+          </Typography>
+          <br/>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
