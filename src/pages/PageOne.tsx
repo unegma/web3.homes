@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 export default function PageOne(): JSX.Element {
 
   const [showForm, setShowForm] = useState(true);
+  const [submittedForm, setSubmittedForm] = useState(false);
   const apiURL = "https://xwhfqz5y9f.execute-api.eu-west-2.amazonaws.com/live";
 
   async function submitForm() {
@@ -26,6 +27,7 @@ export default function PageOne(): JSX.Element {
   } = useForm();
 
   const onSubmit = (data: any) => {
+    setSubmittedForm(true)
     console.log(data);
     submitForm();
   };
@@ -109,7 +111,7 @@ export default function PageOne(): JSX.Element {
         <Container maxWidth="sm">
 
 
-          { showForm ? <SubmissionForm></SubmissionForm> :
+          { showForm && !submittedForm ? <SubmissionForm></SubmissionForm> : showForm && submittedForm ? <span>Submitting...</span> :
             <Typography className="pageText--body">Thanks for helping improve Ethereum! <br/>
             We will be in touch if we need any extra details.<br/>
             Please contact <a href="https://unegma.com/contact" target="_blank">Unegma LTD</a> for any other queries.
