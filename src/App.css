@@ -75,3 +75,17 @@
   display: flex;
   justify-content: flex-start;
 }
+
+.proposal-box {
+  margin: 5px 5px;
+}
+
+/*todo refactor this so aren't force overriding*/
+.MuiTextField-root {
+  min-width: 500px !important;
+  margin: 5px 0 !important;
+}
+
+.error {
+  color: red;
+}
