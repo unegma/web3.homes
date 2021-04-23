@@ -58,7 +58,20 @@
   font-size: 16px !important;
 }
 
+.padded-text {
+  padding: 8px;
+}
+
+.padded-container {
+  padding: 0 80px;
+}
+
 .affiliate--ethldn {
   width: 100px;
   height: auto;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
 }
