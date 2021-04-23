@@ -154,7 +154,9 @@ export default function Menu(props: any) {
             </Link>
           </ListItem>
         </List>
-
+        <ListItem>
+          <Typography><a href="https://unegma.com" target="_blank">Unegma LTD</a></Typography>
+        </ListItem>
       </Drawer>
     </div>
   )
