@@ -11,19 +11,13 @@ import {Link} from "react-router-dom";
 export default function PageOne(): JSX.Element {
 
   const [showForm, setShowForm] = useState(true);
-  // const apiURL = "https://gc4fvpbabl.execute-api.eu-west-2.amazonaws.com/live";
+  const apiURL = "https://xwhfqz5y9f.execute-api.eu-west-2.amazonaws.com/live";
 
-  // useEffect(() => {
-  //   async function fetchImage() {
-  //     const response = await axios.get(apiURL);
-  //     console.log(response);
-  //
-  //     let data = JSON.parse(response.data.Payload);
-  //     let imageUrl = `https://${data.body}.ipfs.dweb.link`;
-  //     setImageUrl(imageUrl);
-  //   }
-  //   fetchImage()
-  // }, [imageUrl, setImageUrl]);
+  async function submitForm() {
+    const response = await axios.get(apiURL);
+    console.log(response);
+    setShowForm(false);
+  }
 
   const {
     register,
@@ -33,7 +27,7 @@ export default function PageOne(): JSX.Element {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    setShowForm(false);
+    submitForm();
   };
 
   const SubmissionForm = () => {
