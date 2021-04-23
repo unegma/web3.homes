@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
         <Typography className="homeText">
           EIP Design
         </Typography>
-        <Link to="/page-1" className="enterButton">
+        <Link to="/proposal" className="enterButton">
           <ListItemText primary="enter!" />
         </Link>
       </div>

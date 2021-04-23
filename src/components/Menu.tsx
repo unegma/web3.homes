@@ -144,8 +144,13 @@ export default function Menu(props: any) {
         <Divider/>
         <List>
           <ListItem button onClick={handleDrawerClose}>
-            <Link to="/page-1" className={classes.menuLink}>
-              <ListItemText primary="1. Page 1" />
+            <Link to="/proposal" className={classes.menuLink}>
+              <ListItemText primary="Submit Proposal" />
+            </Link>
+          </ListItem>
+          <ListItem button onClick={handleDrawerClose}>
+            <Link to="/about" className={classes.menuLink}>
+              <ListItemText primary="About" />
             </Link>
           </ListItem>
         </List>

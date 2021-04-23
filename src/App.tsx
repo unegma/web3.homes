@@ -5,6 +5,7 @@ import {createStyles, makeStyles, Theme, MuiThemeProvider, createMuiTheme} from 
 import Menu from "./components/Menu";
 import {Redirect, Route, Switch} from "react-router-dom";
 import PageOne from "./pages/PageOne";
+import About from "./pages/About";
 import Home from "./pages/Home";
 
 const drawerWidth = 240; // duplicate in SideMenu for now
@@ -65,7 +66,8 @@ function App() {
 
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/page-1" component={PageOne}/>
+            <Route exact path="/proposal" component={PageOne}/>
+            <Route exact path="/about" component={About}/>
             <Redirect to="/"/>
           </Switch>
         </main>

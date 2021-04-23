@@ -5,20 +5,20 @@ import { useForm } from 'react-hook-form';
 
 export default function PageOne(): JSX.Element {
 
-  const [imageUrl, setImageUrl] = useState("");
-  const apiURL = "https://gc4fvpbabl.execute-api.eu-west-2.amazonaws.com/live";
+  // const [imageUrl, setImageUrl] = useState("");
+  // const apiURL = "https://gc4fvpbabl.execute-api.eu-west-2.amazonaws.com/live";
 
-  useEffect(() => {
-    async function fetchImage() {
-      const response = await axios.get(apiURL);
-      console.log(response);
-
-      let data = JSON.parse(response.data.Payload);
-      let imageUrl = `https://${data.body}.ipfs.dweb.link`;
-      setImageUrl(imageUrl);
-    }
-    fetchImage()
-  }, [imageUrl, setImageUrl]);
+  // useEffect(() => {
+  //   async function fetchImage() {
+  //     const response = await axios.get(apiURL);
+  //     console.log(response);
+  //
+  //     let data = JSON.parse(response.data.Payload);
+  //     let imageUrl = `https://${data.body}.ipfs.dweb.link`;
+  //     setImageUrl(imageUrl);
+  //   }
+  //   fetchImage()
+  // }, [imageUrl, setImageUrl]);
 
   const {
     register,
@@ -36,7 +36,7 @@ export default function PageOne(): JSX.Element {
         <Container maxWidth="sm">
           Hi
 
-          <img src={imageUrl} />
+          {/*<img src={imageUrl} />*/}
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <input {...register('firstName')} /> {/* register an input */}
