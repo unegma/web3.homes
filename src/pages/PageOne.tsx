@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Container} from "@material-ui/core";
 import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 export default function PageOne(): JSX.Element {
 
@@ -17,7 +18,17 @@ export default function PageOne(): JSX.Element {
       setImageUrl(imageUrl);
     }
     fetchImage()
-  }, [imageUrl, setImageUrl])
+  }, [imageUrl, setImageUrl]);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data)
+  };
 
   return (
     <section className="container">
@@ -26,6 +37,15 @@ export default function PageOne(): JSX.Element {
           Hi
 
           <img src={imageUrl} />
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input {...register('firstName')} /> {/* register an input */}
+            <input {...register('lastName', { required: true })} />
+            {errors.lastName && <p>Last name is required.</p>}
+            <input {...register('age', { pattern: /\d+/ })} />
+            {errors.age && <p>Please enter number for age.</p>}
+            <input type="submit" />
+          </form>
 
         </Container>
       </div>
