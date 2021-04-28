@@ -38,6 +38,12 @@ const useStyles = makeStyles((theme: Theme) =>
     menuButton: {
       marginRight: theme.spacing(2),
     },
+    menuContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      justifyContent: 'space-between',
+    },
     menuLink: {
       textDecoration: 'none',
       color: 'Black',
@@ -142,21 +148,25 @@ export default function Menu(props: any) {
           </IconButton>
         </div>
         <Divider/>
-        <List>
-          <ListItem button onClick={handleDrawerClose}>
-            <Link to="/proposal" className={classes.menuLink}>
-              <ListItemText primary="Submit Proposal" />
-            </Link>
-          </ListItem>
-          <ListItem button onClick={handleDrawerClose}>
-            <Link to="/about" className={classes.menuLink}>
-              <ListItemText primary="About" />
-            </Link>
-          </ListItem>
-        </List>
-        <ListItem>
-          <Typography><a href="https://unegma.com" target="_blank">Unegma LTD</a></Typography>
-        </ListItem>
+        <div className={classes.menuContainer}>
+          <List>
+            <ListItem button onClick={handleDrawerClose}>
+              <Link to="/proposal" className={classes.menuLink}>
+                <ListItemText primary="Submit Proposal" />
+              </Link>
+            </ListItem>
+            <ListItem button onClick={handleDrawerClose}>
+              <Link to="/about" className={classes.menuLink}>
+                <ListItemText primary="About" />
+              </Link>
+            </ListItem>
+          </List>
+          <List>
+            <ListItem>
+              <Typography><a href="https://unegma.com" target="_blank">Unegma LTD</a></Typography>
+            </ListItem>
+          </List>
+        </div>
       </Drawer>
     </div>
   )
