@@ -55,6 +55,14 @@ export default function PageOne(): JSX.Element {
           {errors.email && <span className="error"><br/>An email is required.</span>}
           <br/>
 
+          <TextField
+            variant="outlined"
+            {...register('domain', { required: true })}
+            label="Desired Domain Name"
+          />
+          {errors.domain && <span className="error"><br/>A domain is required.</span>}
+          <br/>
+
           <Button type="submit" color="primary" variant="contained" className="list-item">
             Submit
           </Button>
@@ -70,7 +78,7 @@ export default function PageOne(): JSX.Element {
 
 
           { showForm && !submittedForm ? <SubmissionForm></SubmissionForm> : showForm && submittedForm ? <span>Submitting...</span> :
-            <Typography className="pageText--body">Thanks for helping improve Ethereum! <br/>
+            <Typography className="pageText--body">Thanks for helping improve the Web3 Ecosystem! <br/>
             We will be in touch if we need any extra details.<br/>
             Please contact <a href="https://unegma.com/contact" target="_blank">Unegma LTD</a> for any other queries.
             </Typography>
