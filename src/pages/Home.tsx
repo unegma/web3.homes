@@ -9,12 +9,12 @@ export default function Home(): JSX.Element {
     <section className="container left padded-container">
       <div>
         <Typography className="homeText">
-          EIP Proposal Designer
+          Web3 Homes
         </Typography>
-        <Typography className="pageText--body padded-text">For enterprise clients to submit proposals for improvements to the Ethereum Protocol. <Link to="/about" className="enterButton">More Info.</Link></Typography>
+        <Typography className="pageText--body padded-text">Your one stop shop for on-boarding into the Web3 ecosystem.</Typography>
         <br/>
         <Link to="/proposal" className="enterButton">
-          <ListItemText className="left padded-text" primary="Submit a proposal" />
+          <ListItemText className="left padded-text" primary="Get Started" />
         </Link>
       </div>
     </section>

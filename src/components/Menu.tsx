@@ -121,7 +121,7 @@ export default function Menu(props: any) {
           </IconButton>
           <Typography variant="h6">
             <Link to="/" className="logo">
-              eip.design
+              Web3 Homes
             </Link>
           </Typography>
         </Toolbar>

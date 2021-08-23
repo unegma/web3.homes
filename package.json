@@ -1,5 +1,5 @@
 {
-  "name": "eip.design",
+  "name": "web3.homes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,7 +44,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "update-install": "npm update; npm install",
-    "deploy": "npm run build; aws --profile unegma s3 sync --delete ./build/ s3://eip.design/"
+    "deploy": "npm run build; aws --profile unegma s3 sync --delete ./build/ s3://web3.homes/"
   },
   "eslintConfig": {
     "extends": [

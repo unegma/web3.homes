@@ -11,7 +11,7 @@ import Home from "./pages/Home";
 const drawerWidth = 240; // duplicate in SideMenu for now
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#09112f' },
+    primary: { main: '#f57d72' },
     secondary: { main: '#4d4d4d' },
   }
 })
