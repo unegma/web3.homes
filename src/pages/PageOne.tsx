@@ -33,9 +33,25 @@ export default function PageOne(): JSX.Element {
   const SubmissionForm = () => {
     return (
       <>
+        <Typography className="pageText--heading">
+          Get Started<br/><br/>
+        </Typography>
         <Typography className="pageText--body">
-          Please include as much detail as possible. We will get in touch if any details are missing.
-          See <Link to="/about" className="enterButton">here for more info.</Link>
+          Setting up a Web3 domain attached to your wallet can be a bit complicated..<br/>
+        </Typography>
+        <Typography className="pageText--body">
+          So we will do it for you for free (although we wouldn't say no to a tip)..<br/>
+        </Typography>
+        <Typography className="pageText--body">
+          All you need to cover is the cost of the domain and any transaction fees.<br/><br/>
+        </Typography>
+        <Typography className="pageText--body">
+          You will then be able to ask for Digital Tokens (in supported places) by giving a human readable domain, such as:&nbsp;
+          <a target="_blank" href="#">unegma.eth</a><br/><br/>
+        </Typography>
+        <Typography className="pageText--body">
+          All you need to do is choose an <a target="_blank" href="https://ens.domains/">ENS domain</a> (pay yearly),<br/> or an&nbsp;
+          <a target="_blank" href="https://unstoppabledomains.com">Unstoppable Domain</a> (pay once)<br/> and then fill out the form below, and we will do the rest for you.
         </Typography>
         <br/>
 
@@ -69,6 +85,14 @@ export default function PageOne(): JSX.Element {
             label="Extra details (optional)"
           />
           <br/>
+          <br/>
+
+
+          <Typography className="pageText--body">
+            Please include as much detail as possible. We will get in touch if any details are missing.
+            See <Link to="/about" className="enterButton">here for more info.</Link>
+          </Typography>
+
           <br/>
 
           <Button type="submit" color="primary" variant="contained" className="list-item">
