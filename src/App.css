@@ -89,3 +89,13 @@
 .error {
   color: red;
 }
+
+
+.home__section2 {
+  /*background-color: black;*/
+  border-top: 1px solid grey;
+}
+
+/*.home__section2-text {*/
+/*  color: white;*/
+/*}*/
