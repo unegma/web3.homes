@@ -11,7 +11,9 @@ export default function About(): JSX.Element {
           <Typography paragraph className="pageText--heading">
             About
           </Typography>
-
+          <Typography paragraph className="">
+            Built by <a target="_blank" href="https://unegma.com">Unegma</a>
+          </Typography>
         </Container>
       </div>
     </section>

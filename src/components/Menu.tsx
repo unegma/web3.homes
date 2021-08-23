@@ -151,6 +151,11 @@ export default function Menu(props: any) {
         <div className={classes.menuContainer}>
           <List>
             <ListItem button onClick={handleDrawerClose}>
+              <Link to="/" className={classes.menuLink}>
+                <ListItemText primary="Home" />
+              </Link>
+            </ListItem>
+            <ListItem button onClick={handleDrawerClose}>
               <Link to="/proposal" className={classes.menuLink}>
                 <ListItemText primary="Request" />
               </Link>

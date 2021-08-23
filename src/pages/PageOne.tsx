@@ -43,14 +43,14 @@ export default function PageOne(): JSX.Element {
           <TextField
             variant="outlined"
             {...register('name')}
-            label="Full Name"
+            label="Name (optional)"
           />
           <br/>
 
           <TextField
             variant="outlined"
             {...register('email', { required: true })}
-            label="Email"
+            label="Email*"
           />
           {errors.email && <span className="error"><br/>An email is required.</span>}
           <br/>
@@ -58,9 +58,17 @@ export default function PageOne(): JSX.Element {
           <TextField
             variant="outlined"
             {...register('domain', { required: true })}
-            label="Desired Domain Name"
+            label="Desired Domain Name*"
           />
           {errors.domain && <span className="error"><br/>A domain is required.</span>}
+          <br/>
+
+          <TextField
+            variant="outlined"
+            {...register('other')}
+            label="Extra details (optional)"
+          />
+          <br/>
           <br/>
 
           <Button type="submit" color="primary" variant="contained" className="list-item">
