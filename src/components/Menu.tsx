@@ -31,7 +31,7 @@ const providerOptions = {
 
 const web3Modal = new Web3Modal({
   network: "mainnet", // optional
-  cacheProvider: true, // optional
+  cacheProvider: false, // optional // todo look into this
   providerOptions // required
 });
 
