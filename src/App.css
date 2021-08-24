@@ -109,3 +109,15 @@
 .flex-column {
   flex-direction: column;
 }
+
+.toolBar {
+  /*align-content: space-between;*/
+}
+
+.connectButton {
+  margin-left: auto !important;
+}
+
+.disconnectButton {
+  margin-left: auto !important;
+}

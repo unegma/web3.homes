@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import AppBar from "@material-ui/core/AppBar";
 import clsx from "clsx";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,7 +13,29 @@ import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {createStyles, makeStyles, Theme, useTheme} from "@material-ui/core/styles";
-import {ListItemText} from "@material-ui/core";
+import {Box, Button, ListItemText} from "@material-ui/core";
+import Web3 from "web3";
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import {Web3Provider} from "@ethersproject/providers";
+const INFURA_ID = process.env.REACT_APP_INFURA_ID;
+
+const providerOptions = {
+  walletconnect: {
+    package: WalletConnectProvider,
+    options: {
+      infuraId: INFURA_ID
+    }
+  }
+};
+
+const web3Modal = new Web3Modal({
+  network: "mainnet", // optional
+  cacheProvider: true, // optional
+  providerOptions // required
+});
+
+console.log("Web3Modal instance is", web3Modal);
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
@@ -101,6 +123,74 @@ export default function Menu(props: any) {
   };
 
 
+  const [provider, setProvider] = useState<any>();
+  const [web3, setWeb3] = useState<any>();
+  const [accountId, setAccountId] = useState<any>();
+
+
+  async function initProvider() {
+    console.log('here1')
+    let provider, web3;
+    try {
+      console.log('here2')
+      provider = await web3Modal.connect();
+      web3 = new Web3(provider);
+      setWeb3(web3);
+      console.log('here3')
+    } catch (error: any) {
+      console.log('here4')
+      console.log(error);
+      return;
+    }
+
+    // Subscribe to accounts change
+    provider.on("accountsChanged", (accounts: any) => {
+      console.log(accounts);
+    });
+
+    // Subscribe to chainId change
+    provider.on("chainChanged", (chainId: any) => {
+      console.log(chainId);
+    });
+
+
+    // // Subscribe to provider connection
+    provider.on("connect", (info: { chainId: number }) => {
+      console.log(info);
+    });
+    //
+    // // Subscribe to provider disconnection
+    provider.on("disconnect", (error: { code: number; message: string }) => {
+      console.log(error);
+    });
+
+    setProvider(provider);
+  }
+
+  async function closeProvider (provider: any) {
+    console.log("Killing the wallet connection", provider);
+
+    try {
+      if (provider.disconnect) { // todo check that all providers have this method
+        await provider.disconnect();
+
+        // https://github.com/Web3Modal/web3modal-vanilla-js-example/blob/master/example.js
+        // If the cached provider is not cleared,
+        // WalletConnect will default to the existing session
+        // and does not allow to re-scan the QR code with a new wallet.
+        // Depending on your use case you may want or want not his behavir.
+        await web3Modal.clearCachedProvider();
+        setProvider(null);
+      }
+    } catch (error: any) {
+      console.log('Failed to disconnect provider');
+    }
+
+    // selectedAccount = null;
+  }
+
+
+
   return (
     <div className={classes.root}>
       <AppBar
@@ -124,6 +214,12 @@ export default function Menu(props: any) {
               Web3 Homes
             </Link>
           </Typography>
+          <Button variant="contained" color="secondary" className="connectButton" onClick={initProvider}>
+            Connect
+          </Button>
+          <Button variant="contained" color="secondary" className="disconnectButton" onClick={() => {closeProvider(provider)}}>
+            Disconnect
+          </Button>
         </Toolbar>
 
         {/*<div style={{*/}
