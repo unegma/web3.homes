@@ -3,10 +3,11 @@ import './App.css';
 import clsx from 'clsx';
 import {createStyles, makeStyles, Theme, MuiThemeProvider, createMuiTheme} from "@material-ui/core/styles";
 import Menu from "./components/Menu";
-import {Redirect, Route, Switch} from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import PageOne from "./pages/PageOne";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import WalletPage from "./pages/WalletPage";
 
 const drawerWidth = 240; // duplicate in SideMenu for now
 const theme = createMuiTheme({
@@ -68,6 +69,7 @@ function App() {
             <Route exact path="/" component={Home}/>
             <Route exact path="/proposal" component={PageOne}/>
             <Route exact path="/about" component={About}/>
+            <Route exact path="/wallet" component={WalletPage}/>
             <Redirect to="/"/>
           </Switch>
         </main>
