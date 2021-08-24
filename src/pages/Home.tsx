@@ -12,6 +12,9 @@ export default function Home(): JSX.Element {
           <Typography className="homeText">
             Web3 Homes
           </Typography>
+          <Typography className="pageText--body italic padded-text error">
+            <i>(This site is currently a POC/MVP)</i>
+          </Typography>
           {/*<Typography className="pageText--body padded-text">Your one stop shop for on-boarding into the Web3 ecosystem.</Typography>*/}
           <Typography className="pageText--body padded-text">When navigating around the internet, <br/>Do most of us remember and use:&nbsp;
             <a href="http://172.217.169.78" target="_blank">172.217.169.78</a><br/>
