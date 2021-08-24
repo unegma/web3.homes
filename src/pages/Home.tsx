@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
 import {Link} from "react-router-dom";
-import {Box, Container, ListItemText} from "@material-ui/core";
+import {Box, Button, Container, ListItemText} from "@material-ui/core";
 
 export default function Home(): JSX.Element {
 
@@ -32,9 +32,9 @@ export default function Home(): JSX.Element {
             <sub>(Take care when using your domain name with some services such as exchanges).</sub>
           </Typography>
           <br/>
-          <Link to="/proposal" className="enterButton">
-            <ListItemText className="left padded-text" primary="Get Started" />
-          </Link>
+          <Button variant="contained" color="primary" href="/proposal">
+            Get Started
+          </Button>
         </Box>
     </Container>
       {/*<section className="container left padded-container home__section2">*/}
