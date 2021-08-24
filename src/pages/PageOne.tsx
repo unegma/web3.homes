@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Container} from "@material-ui/core";
+import {Box, Container} from "@material-ui/core";
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { TextField } from "@material-ui/core";
@@ -32,7 +32,9 @@ export default function PageOne(): JSX.Element {
 
   const SubmissionForm = () => {
     return (
-      <>
+      // <section className="container flex-column padded-container">
+      <Container maxWidth="sm">
+        <Box my={4}>
         <Typography className="pageText--heading">
           Get Started<br/><br/>
         </Typography>
@@ -99,25 +101,23 @@ export default function PageOne(): JSX.Element {
             Submit
           </Button>
         </form>
-      </>
+      {/*</section>*/}
+        </Box>
+      </Container>
     )
   }
 
   return (
-    <section className="container">
-      <div>
-        <Container maxWidth="sm">
+    <Container maxWidth="sm">
+      <Box my={4}>
 
-
-          { showForm && !submittedForm ? <SubmissionForm></SubmissionForm> : showForm && submittedForm ? <span>Submitting...</span> :
-            <Typography className="pageText--body">Thanks for helping improve the Web3 Ecosystem! <br/>
-            We will be in touch if we need any extra details.<br/>
-            Please contact <a href="https://unegma.com/contact" target="_blank">Unegma LTD</a> for any other queries.
-            </Typography>
-          }
-
-        </Container>
-      </div>
-    </section>
+      { showForm && !submittedForm ? <SubmissionForm></SubmissionForm> : showForm && submittedForm ? <span>Submitting...</span> :
+        <Typography className="pageText--body">Thanks for helping improve the Web3 Ecosystem! <br/>
+        We will be in touch if we need any extra details.<br/>
+        Please contact <a href="https://unegma.com/contact" target="_blank">Unegma LTD</a> for any other queries.
+        </Typography>
+      }
+      </Box>
+    </Container>
   );
 }

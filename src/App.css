@@ -99,3 +99,7 @@
 /*.home__section2-text {*/
 /*  color: white;*/
 /*}*/
+
+.flex-column {
+  flex-direction: column;
+}

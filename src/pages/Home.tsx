@@ -1,14 +1,14 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
 import {Link} from "react-router-dom";
-import {Container, ListItemText} from "@material-ui/core";
+import {Box, Container, ListItemText} from "@material-ui/core";
 
 export default function Home(): JSX.Element {
 
   return (
     <>
-      <section className="container left padded-container">
-        <div>
+      <Container maxWidth="sm">
+        <Box my={4}>
           <Typography className="homeText">
             Web3 Homes
           </Typography>
@@ -35,8 +35,8 @@ export default function Home(): JSX.Element {
           <Link to="/proposal" className="enterButton">
             <ListItemText className="left padded-text" primary="Get Started" />
           </Link>
-        </div>
-      </section>
+        </Box>
+    </Container>
       {/*<section className="container left padded-container home__section2">*/}
       {/*  <div>*/}
       {/*    <Typography className="homeText home__section2-text">*/}
