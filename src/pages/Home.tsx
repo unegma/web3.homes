@@ -10,8 +10,13 @@ export default function Home(): JSX.Element {
       <Container maxWidth="sm">
         <Box my={4}>
           <Typography className="homeText">
-            Web3 Homes
+            Web3.Homes
           </Typography>
+
+          <Typography className="padded-text homeTextTwo">
+            Finding Homes for Web3 Wallet Addresses.
+          </Typography>
+
           <Typography className="pageText--body italic padded-text error">
             <i>(This site is currently a POC/MVP)</i>
           </Typography>
