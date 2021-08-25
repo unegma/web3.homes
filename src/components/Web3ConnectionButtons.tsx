@@ -135,7 +135,7 @@ export default function Web3ConnectionButtons() {
           </div>
           <div className="mywallet-button-container">
             {(active) && (
-              <Button variant="contained" color="primary" component={Link} to="/wallet">
+              <Button variant="contained" color="primary" onClick={hideModal} component={Link} to="/wallet">
                 My Wallet
               </Button>
             )}
