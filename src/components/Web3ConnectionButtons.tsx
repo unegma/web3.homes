@@ -5,18 +5,52 @@ import { injected, walletconnect } from "../helpers/connectors";
 import { useEagerConnect, useInactiveListener } from "../helpers/hooks";
 import getErrorMessage from "../helpers/getErrorMessage";
 import { Spinner } from "./Spinner";
+import {Button, Modal} from "@material-ui/core";
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const useStyles2 = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      position: 'absolute',
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      alignContent: 'center'
+    },
+  }),
+);
 
 enum ConnectorNames {
-  Injected = 'Injected',
+  Metamask = 'Metamask',
   WalletConnect = 'WalletConnect'
 }
 
 const connectorsByName: { [connectorName in ConnectorNames]: any} = {
-  [ConnectorNames.Injected]: injected,
+  [ConnectorNames.Metamask]: injected,
   [ConnectorNames.WalletConnect]: walletconnect
 }
 
 export default function Web3ConnectionButtons() {
+  const classes2 = useStyles2();
+  const [modalStyle] = useState(getModalStyle);
+
+  const [modalOpen, setModalOpen] = useState(false);
   const context = useWeb3React<Web3Provider>();
   const { connector, library, chainId, account, activate, deactivate, active, error } = context;
 
@@ -32,142 +66,109 @@ export default function Web3ConnectionButtons() {
   // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
   const triedEager = useEagerConnect();
 
+  const handleDisconnect = () => {
+    if (connector === connectorsByName[ConnectorNames.WalletConnect]) {
+      console.log('Deactivating WalletConnect session');
+      (connector as any).close(); // todo unfinsihed
+      // deactivate();
+    } else {
+      deactivate();
+    }
+  }
+
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   useInactiveListener(!triedEager || !!activatingConnector);
 
+  const showModal = () => {
+    setModalOpen(true);
+  }
+
+  const hideModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <>
-      <div
-        style={{
-          display: 'grid',
-          gridGap: '1rem',
-          gridTemplateColumns: '1fr 1fr',
-          maxWidth: '20rem',
-          margin: 'auto'
-        }}
+      <Modal
+        open={modalOpen}
+        onClose={hideModal}
       >
-        {Object.keys(connectorsByName).map((name: any) => {
-          const currentConnector = connectorsByName[name as keyof typeof ConnectorNames];
-          const activating = currentConnector === activatingConnector;
-          const connected = currentConnector === connector;
-          const disabled = !triedEager || !!activatingConnector || connected || !!error;
+        <div style={modalStyle} className={`modalBoxContainer ${classes2.paper}`} >
+          <h2 className="modalTitle">Choose Connection Type</h2>
+          {!!error && <h4>{getErrorMessage(error)}</h4>}
 
-          return (
-            <button
-              style={{
-                height: '3rem',
-                borderRadius: '1rem',
-                borderColor: activating ? 'orange' : connected ? 'green' : 'unset',
-                cursor: disabled ? 'unset' : 'pointer',
-                position: 'relative'
-              }}
-              disabled={disabled}
-              key={name}
-              onClick={() => {
-                setActivatingConnector(currentConnector);
-                activate(connectorsByName[name as keyof typeof ConnectorNames]);
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '0',
-                  left: '0',
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  color: 'black',
-                  margin: '0 0 0 1rem'
-                }}
-              >
-                {activating && <Spinner color={'black'} style={{ height: '25%', marginLeft: '-1rem' }} />}
-                {connected && (
-                  <span role="img" aria-label="check">
-                      ✅
-                    </span>
-                )}
-              </div>
-              {name}
-            </button>
-          )
-        })}
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        {(active || error) && (
-          <button
-            style={{
-              height: '3rem',
-              marginTop: '2rem',
-              borderRadius: '1rem',
-              borderColor: 'red',
-              cursor: 'pointer'
-            }}
-            onClick={() => {
-              deactivate();
-            }}
-          >
-            Deactivate
-          </button>
-        )}
+          <div>
+            {Object.keys(connectorsByName).map((name: any) => {
+              const currentConnector = connectorsByName[name as keyof typeof ConnectorNames];
+              const activating = currentConnector === activatingConnector;
+              const connected = currentConnector === connector;
+              const disabled = !triedEager || !!activatingConnector || connected || !!error;
 
-        {!!error && <h4 style={{ marginTop: '1rem', marginBottom: '0' }}>{getErrorMessage(error)}</h4>}
-      </div>
+              return (
+                <div className="connectButtonContainer" key={name}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className="connectTypeButton"
+                    disabled={disabled}
+                    key={name}
+                    onClick={() => {
+                      setActivatingConnector(currentConnector);
+                      activate(connectorsByName[name as keyof typeof ConnectorNames]);
+                    }}
+                  >
+                    <div>
+                      {activating && <Spinner color={'black'} style={{ height: '25%', marginLeft: '-1rem' }} />}
+                      {connected && (
+                        <span role="img" aria-label="check">
+                          ✅
+                        </span>
+                      )}
+                    </div>
+                    {name}
+                  </Button>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </Modal>
 
-      <hr style={{ margin: '2rem' }} />
+      {(!active) && (
+        <Button variant="contained" color="secondary" className="connectButton" onClick={showModal}>
+          Connect
+        </Button>
+      )}
 
-      <div
-        style={{
-          display: 'grid',
-          gridGap: '1rem',
-          gridTemplateColumns: 'fit-content',
-          maxWidth: '20rem',
-          margin: 'auto'
-        }}
-      >
-        {/*{!!(library && account) && (*/}
-        {/*  <button*/}
-        {/*    style={{*/}
-        {/*      height: '3rem',*/}
-        {/*      borderRadius: '1rem',*/}
-        {/*      cursor: 'pointer'*/}
-        {/*    }}*/}
-        {/*    onClick={() => {*/}
-        {/*      library*/}
-        {/*        .getSigner(account)*/}
-        {/*        .signMessage('👋')*/}
-        {/*        .then((signature: any) => {*/}
-        {/*          window.alert(`Success!\n\n${signature}`)*/}
-        {/*        })*/}
-        {/*        .catch((error: any) => {*/}
-        {/*          window.alert('Failure!' + (error && error.message ? `\n\n${error.message}` : ''))*/}
-        {/*        })*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    Sign Message*/}
-        {/*  </button>*/}
-        {/*)}*/}
-        {connector === connectorsByName[ConnectorNames.WalletConnect] && (
-          <button
-            style={{
-              height: '3rem',
-              borderRadius: '1rem',
-              cursor: 'pointer'
-            }}
-            onClick={() => {
-              ;(connector as any).close()
-            }}
-          >
-            Kill WalletConnect Session
-          </button>
-        )}
-      </div>
+      {(active || error) && (
+        <Button variant="contained" color="secondary" className="disconnectButton" onClick={() => {handleDisconnect()}}>
+          Disconnect
+        </Button>
+      )}
 
-      {/*<Button variant="contained" color="secondary" className="connectButton" >*/}
-      {/*  Connect*/}
-      {/*</Button>*/}
-      {/*<Button variant="contained" color="secondary" className="disconnectButton">*/}
-      {/*  Disconnect*/}
-      {/*</Button>*/}
+      {/*{!!(library && account) && (*/}
+      {/*  <button*/}
+      {/*    style={{*/}
+      {/*      height: '3rem',*/}
+      {/*      borderRadius: '1rem',*/}
+      {/*      cursor: 'pointer'*/}
+      {/*    }}*/}
+      {/*    onClick={() => {*/}
+      {/*      library*/}
+      {/*        .getSigner(account)*/}
+      {/*        .signMessage('👋')*/}
+      {/*        .then((signature: any) => {*/}
+      {/*          window.alert(`Success!\n\n${signature}`)*/}
+      {/*        })*/}
+      {/*        .catch((error: any) => {*/}
+      {/*          window.alert('Failure!' + (error && error.message ? `\n\n${error.message}` : ''))*/}
+      {/*        })*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    Sign Message*/}
+      {/*  </button>*/}
+      {/*)}*/}
+
     </>
   )
 }
