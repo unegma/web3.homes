@@ -5,10 +5,10 @@ import { injected, walletconnect } from "../helpers/connectors";
 import { useEagerConnect, useInactiveListener } from "../helpers/hooks";
 import getErrorMessage from "../helpers/getErrorMessage";
 import { Spinner } from "./Spinner";
-import {Button, Modal} from "@material-ui/core";
+import { Button, Modal} from "@material-ui/core";
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import {Link} from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
+import DonateButton from "./DonateButton";
 
 function getModalStyle() {
   const top = 50;
@@ -96,7 +96,15 @@ export default function Web3ConnectionButtons() {
         onClose={hideModal}
       >
         <div style={modalStyle} className={`modalBoxContainer ${classes2.paper}`} >
-          <h2 className="modalTitle">Choose Connection Type</h2>
+
+          {(!active && !error) && (
+            <h2 className="modalTitle">Choose Connection Type</h2>
+          )}
+
+          {(active || error) && (
+            <h2 className="modalTitle">Choose Action</h2>
+          )}
+
           {!!error && <h4>{getErrorMessage(error)}</h4>}
 
           <div>
@@ -107,39 +115,45 @@ export default function Web3ConnectionButtons() {
               const disabled = !triedEager || !!activatingConnector || connected || !!error;
 
               return (
-                <div className="connectButtonContainer" key={name}>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className="connectTypeButton"
-                    disabled={disabled}
-                    key={name}
-                    onClick={() => {
-                      setActivatingConnector(currentConnector);
-                      activate(connectorsByName[name as keyof typeof ConnectorNames]);
-                    }}
-                  >
-                    <div>
-                      {activating && <Spinner color={'black'} style={{ height: '25%', marginLeft: '-1rem' }} />}
-                      {connected && (
-                        <span role="img" aria-label="check">
-                          ✅
-                        </span>
-                      )}
-                    </div>
-                    {name}
-                  </Button>
-                </div>
+                (!active && !error) && (
+                  <div className="connectButtonContainer" key={name}>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      className="connectTypeButton"
+                      disabled={disabled}
+                      key={name}
+                      onClick={() => {
+                        setActivatingConnector(currentConnector);
+                        activate(connectorsByName[name as keyof typeof ConnectorNames]);
+                      }}
+                    >
+                      <div>
+                        {activating && <Spinner color={'black'} style={{ height: '25%', marginLeft: '-1rem' }} />}
+                        {connected && (
+                          <span role="img" aria-label="check">
+                            ✅
+                          </span>
+                        )}
+                      </div>
+                      {name}
+                    </Button>
+                  </div>
+                )
               )
             })}
           </div>
           <div className="mywallet-button-container">
             {(active) && (
               <Button variant="contained" color="primary" onClick={hideModal} component={Link} to="/wallet">
-                My Wallet
+                Go To My Wallet
               </Button>
             )}
+            <br/>
+            <DonateButton />
+            <br/>
           </div>
+
         </div>
       </Modal>
 
@@ -150,9 +164,14 @@ export default function Web3ConnectionButtons() {
       )}
 
       {(active || error) && (
-        <Button variant="contained" color="secondary" className="disconnectButton" onClick={() => {handleDisconnect()}}>
-          Disconnect
-        </Button>
+        <>
+          <div className="donateButton-container">
+            <DonateButton />
+          </div>
+          <Button variant="contained" color="secondary" className="disconnectButton" onClick={() => {handleDisconnect()}}>
+            Disconnect
+          </Button>
+        </>
       )}
 
       {/*{!!(library && account) && (*/}
