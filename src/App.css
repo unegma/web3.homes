@@ -142,5 +142,5 @@
 .longtext-box {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 92vw; /* taking into account padding*/
+  max-width: 90vw; /* taking into account padding*/
 }
