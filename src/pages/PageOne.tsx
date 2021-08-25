@@ -32,8 +32,7 @@ export default function PageOne(): JSX.Element {
 
   const SubmissionForm = () => {
     return (
-      // <section className="container flex-column padded-container">
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box my={4}>
         <Typography variant="h2">
           Get Started<br/><br/>
@@ -101,14 +100,13 @@ export default function PageOne(): JSX.Element {
             Submit
           </Button>
         </form>
-      {/*</section>*/}
         </Box>
       </Container>
     )
   }
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Box my={4}>
 
       { showForm && !submittedForm ? <SubmissionForm></SubmissionForm> : showForm && submittedForm ? <span>Submitting...</span> :

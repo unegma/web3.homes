@@ -6,7 +6,7 @@ import WalletDetails from "../components/WalletDetails";
 export default function WalletPage(): JSX.Element {
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Box my={4}>
         <Typography paragraph variant="h2">
           My Wallet

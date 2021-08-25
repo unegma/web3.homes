@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 export default function About(): JSX.Element {
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Box my={4}>
         <Typography paragraph variant="h2">
           About
