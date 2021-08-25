@@ -53,7 +53,7 @@ export default function Web3ConnectionButtons() {
   const [modalStyle] = useState(getModalStyle);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const context = useWeb3React<Web3Provider>();
+  const context = useWeb3React<Web3Provider>(); // todo check because this web3provider is from ethers
   const { connector, library, chainId, account, activate, deactivate, active, error } = context;
 
   // handle logic to recognize the connector currently being activated
