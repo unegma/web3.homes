@@ -138,3 +138,9 @@
   display: flex;
   justify-content: center;
 }
+
+.longtext-box {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100vw;
+}

@@ -7,7 +7,7 @@ export default function Home(): JSX.Element {
 
   return (
     <Container maxWidth="md">
-      <Box my={4}>
+      <Box my={4} className="longtext-box">
         <Typography variant="h2">
           Web3.Homes
         </Typography>
@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
         <Typography className="">
           <b>Why should this be any different in Web3.</b><br/><br/>
         </Typography>
-        <Typography className="" noWrap>
+        <Typography noWrap>
 
           Would you prefer to say:&nbsp;<br/>
           Please send 1 ETH to: "<a href="#">0xEF9D542Cd93c6300b5BB755dff4033Eb0c8f8e01</a>"<br/>
