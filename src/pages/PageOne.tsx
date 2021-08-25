@@ -37,20 +37,20 @@ export default function PageOne(): JSX.Element {
         <Typography variant="h2">
           Get Started<br/><br/>
         </Typography>
-        <Typography className="pageText--body">
+        <Typography className="">
           Setting up a Web3 domain attached to your wallet can be a bit complicated..<br/>
         </Typography>
-        <Typography className="pageText--body">
+        <Typography className="">
           So we will do it for you for free (although we wouldn't say no to a tip)..<br/>
         </Typography>
-        <Typography className="pageText--body">
+        <Typography className="">
           All you need to cover is the cost of the domain and any transaction fees.<br/><br/>
         </Typography>
-        <Typography className="pageText--body">
+        <Typography className="">
           You will then be able to ask for Digital Tokens (in supported places) by giving a human readable domain, such as:&nbsp;
           <a target="_blank" href="#">unegma.eth</a><br/><br/>
         </Typography>
-        <Typography className="pageText--body">
+        <Typography className="">
           All you need to do is choose an <a target="_blank" href="https://ens.domains/">ENS domain</a> (pay yearly),<br/> or an&nbsp;
           <a target="_blank" href="https://unstoppabledomains.com">Unstoppable Domain</a> (pay once)<br/> and then fill out the form below, and we will do the rest for you.
         </Typography>
@@ -89,7 +89,7 @@ export default function PageOne(): JSX.Element {
           <br/>
 
 
-          <Typography className="pageText--body">
+          <Typography className="">
             Please include as much detail as possible. We will get in touch if any details are missing.
             See <Link to="/about" className="enterButton">here for more info.</Link>
           </Typography>
@@ -110,7 +110,7 @@ export default function PageOne(): JSX.Element {
       <Box my={4}>
 
       { showForm && !submittedForm ? <SubmissionForm></SubmissionForm> : showForm && submittedForm ? <span>Submitting...</span> :
-        <Typography className="pageText--body">Thanks for helping improve the Web3 Ecosystem! <br/>
+        <Typography className="">Thanks for helping improve the Web3 Ecosystem! <br/>
         We will be in touch if we need any extra details.<br/>
         Please contact <a href="https://unegma.com/contact" target="_blank">Unegma LTD</a> for any other queries.
         </Typography>

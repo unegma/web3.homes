@@ -7,6 +7,8 @@ import getErrorMessage from "../helpers/getErrorMessage";
 import { Spinner } from "./Spinner";
 import {Button, Modal} from "@material-ui/core";
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import {Link} from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
 
 function getModalStyle() {
   const top = 50;
@@ -130,6 +132,13 @@ export default function Web3ConnectionButtons() {
                 </div>
               )
             })}
+          </div>
+          <div className="mywallet-button-container">
+            {(active) && (
+              <Button variant="contained" color="primary" href="/wallet">
+                My Wallet
+              </Button>
+            )}
           </div>
         </div>
       </Modal>

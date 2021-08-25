@@ -133,3 +133,8 @@
 .modalTitle {
   text-align: center;
 }
+
+.mywallet-button-container {
+  display: flex;
+  justify-content: center;
+}
