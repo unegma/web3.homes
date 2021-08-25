@@ -72,7 +72,7 @@ export default function Web3ConnectionButtons() {
     if (connector === connectorsByName[ConnectorNames.WalletConnect]) {
       console.log('Deactivating WalletConnect session');
       (connector as any).close(); // todo unfinsihed
-      // deactivate();
+      deactivate();
     } else {
       deactivate();
     }
@@ -143,7 +143,7 @@ export default function Web3ConnectionButtons() {
         </div>
       </Modal>
 
-      {(!active) && (
+      {(!active && !error) && (
         <Button variant="contained" color="secondary" className="connectButton" onClick={showModal}>
           Connect
         </Button>
