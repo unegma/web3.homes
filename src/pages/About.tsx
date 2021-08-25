@@ -14,7 +14,7 @@ export default function About(): JSX.Element {
         {/*  Built by <a target="_blank" href="https://unegma.com">Unegma</a>*/}
         {/*</Typography>*/}
 
-        <Typography className="pageText--body">This site is by <a href="https://unegma.com" target="_blank">Unegma LTD</a> who are not currently affiliated directly with ENS Domains or Unstoppable Domains. For suggestions re this site: <a href="https://github.com/unegma/web3.homes" target="_blank">see here</a>.</Typography>
+        <Typography className="pageText--body">This site is by <a href="https://unegma.com" target="_blank">Unegma LTD</a> who are not currently affiliated directly with <a target="_blank" href="https://ens.domains">ENS Domains</a> or <a href="https://unstoppabledomains.com" target="_blank">Unstoppable Domains</a>.<br/>For making suggestions re this site: <a href="https://github.com/unegma/web3.homes" target="_blank">see our Github here</a>.</Typography>
         <br/>
         <Typography className="pageText--body">For the purposes of this site, <a href="https://unegma.com" target="_blank">Unegma LTD</a> is currently affiliated with the following organisations:</Typography>
         <br/>

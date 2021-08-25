@@ -48,7 +48,8 @@ export default function PageOne(): JSX.Element {
         </Typography>
         <Typography className="">
           You will then be able to ask for Digital Tokens (in supported places) by giving a human readable domain, such as:&nbsp;
-          <a target="_blank" href="#">unegma.eth</a><br/><br/>
+          <a target="_blank" href="#">unegma.eth</a>. See <a target="_blank" href="https://www.youtube.com/watch?v=HUJk7JLRRqM">here for an example</a> of doing this on the <a target="_blank" href="https://poap.xyz">POAP Website</a>.
+          <br/><br/>
         </Typography>
         <Typography className="">
           All you need to do is choose an <a target="_blank" href="https://ens.domains/">ENS domain</a> (pay yearly),<br/> or an&nbsp;
