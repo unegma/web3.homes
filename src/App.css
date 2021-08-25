@@ -156,3 +156,7 @@
   text-overflow: ellipsis;
   max-width: 90vw; /* taking into account padding*/
 }
+
+.youtube-link-container {
+  text-align: center;
+}

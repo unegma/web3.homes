@@ -142,6 +142,13 @@ export default function Web3ConnectionButtons() {
                 )
               )
             })}
+
+            { !active &&
+              <div className="youtube-link-container">
+                <a target="_blank" href="https://www.youtube.com/watch?v=6h_liI6atEk">Learn how to set up a MetaMask wallet.</a>
+              </div>
+            }
+
           </div>
           <div className="mywallet-button-container">
             {(active) && (
