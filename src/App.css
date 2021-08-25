@@ -120,6 +120,16 @@
 }
 
 .disconnectButton {
+  /*margin-left: auto !important;*/
+  margin-left: 10px !important;
+}
+
+.donateButton {
+  color: white !important;
+  background-color: red !important;
+}
+
+.donateButton-container {
   margin-left: auto !important;
 }
 
@@ -137,6 +147,8 @@
 .mywallet-button-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 .longtext-box {

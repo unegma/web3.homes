@@ -1,7 +1,6 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
-import {Link} from "react-router-dom";
-import {Box, Button, Container, ListItemText} from "@material-ui/core";
+import { Box, Button, Container } from "@material-ui/core";
 
 export default function Home(): JSX.Element {
 
