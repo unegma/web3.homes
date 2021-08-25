@@ -112,6 +112,7 @@
 
 .toolBar {
   /*align-content: space-between;*/
+  max-width:100vw;
 }
 
 .connectButton {

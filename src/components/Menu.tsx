@@ -109,7 +109,7 @@ export default function Menu(props: any) {
           [classes.appBarShift]: props.open,
         })}
       >
-        <Toolbar>
+        <Toolbar className="toolBar">
           <IconButton
             color="inherit"
             aria-label="open drawer"
