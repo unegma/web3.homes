@@ -28,11 +28,13 @@ export default function Home(): JSX.Element {
         <Typography className="">
           <b>Why should this be any different in Web3.</b><br/><br/>
         </Typography>
-        <Typography className="">
+        <Typography className="" noWrap>
 
           Would you prefer to say:&nbsp;<br/>
-          Please send 1 ETH to: "<code>0xEF9D542Cd93c6300b5BB755dff4033Eb0c8f8e01</code>"<br/>
+          Please send 1 ETH to: "<a href="#">0xEF9D542Cd93c6300b5BB755dff4033Eb0c8f8e01</a>"<br/>
           Or "Please send to: <a href="#">unegma.eth</a>"?<br/><br/>
+        </Typography>
+        <Typography>
           <sub>(Take care when using your domain name with some services such as exchanges).</sub>
         </Typography>
         <br/>
