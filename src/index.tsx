@@ -18,7 +18,6 @@ ReactDOM.render(
   <React.StrictMode>
     <Web3ReactProvider getLibrary={getLibrary}>
       <Router>
-        <CssBaseline />
         <App />
       </Router>
     </Web3ReactProvider>

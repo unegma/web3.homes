@@ -15,9 +15,11 @@ import PageOne from "./pages/PageOne";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import WalletPage from "./pages/WalletPage";
+import { CssBaseline } from "@material-ui/core";
 
 const drawerWidth = 240; // duplicate in SideMenu for now
 let theme = createMuiTheme({
+  // spacing: 4,
   palette: {
     primary: { main: '#f57d72' },
     secondary: { main: '#4d4d4d' },
@@ -63,6 +65,8 @@ function App() {
 
   return (
     <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+
       <div className={classes.root}>
 
         <Menu open={open} setOpen={setOpen} />

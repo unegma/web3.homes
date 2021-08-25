@@ -17,7 +17,7 @@ export default function Home(): JSX.Element {
             Finding Homes for Web3 Wallet Addresses.
           </Typography>
 
-          <Typography className=" italic error">
+          <Typography className="italic error" >
             <i>(This site is currently a POC/MVP)</i>
           </Typography>
           {/*<Typography className="">Your one stop shop for on-boarding into the Web3 ecosystem.</Typography>*/}
