@@ -8,7 +8,7 @@ export default function WalletPage(): JSX.Element {
   return (
     <Container maxWidth="sm">
       <Box my={4}>
-        <Typography paragraph className="pageText--heading">
+        <Typography paragraph variant="h2">
           My Wallet
         </Typography>
         <WalletDetails/>

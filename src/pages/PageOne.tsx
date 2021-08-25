@@ -35,7 +35,7 @@ export default function PageOne(): JSX.Element {
       // <section className="container flex-column padded-container">
       <Container maxWidth="sm">
         <Box my={4}>
-        <Typography className="pageText--heading">
+        <Typography variant="h2">
           Get Started<br/><br/>
         </Typography>
         <Typography className="pageText--body">

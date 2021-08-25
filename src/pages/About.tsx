@@ -7,7 +7,7 @@ export default function About(): JSX.Element {
   return (
     <Container maxWidth="sm">
       <Box my={4}>
-        <Typography paragraph className="pageText--heading">
+        <Typography paragraph variant="h2">
           About
         </Typography>
         {/*<Typography paragraph className="">*/}

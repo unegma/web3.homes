@@ -1,7 +1,14 @@
 import React from 'react';
 import './App.css';
 import clsx from 'clsx';
-import {createStyles, makeStyles, Theme, MuiThemeProvider, createMuiTheme} from "@material-ui/core/styles";
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  MuiThemeProvider,
+  createMuiTheme,
+  responsiveFontSizes
+} from "@material-ui/core/styles";
 import Menu from "./components/Menu";
 import { Redirect, Route, Switch } from "react-router-dom";
 import PageOne from "./pages/PageOne";
@@ -10,12 +17,14 @@ import Home from "./pages/Home";
 import WalletPage from "./pages/WalletPage";
 
 const drawerWidth = 240; // duplicate in SideMenu for now
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
     primary: { main: '#f57d72' },
     secondary: { main: '#4d4d4d' },
   }
-})
+});
+theme = responsiveFontSizes(theme);
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
