@@ -151,7 +151,7 @@ export default function Menu(props: any) {
                 <ListItemText primary="Home" />
               </ListItem>
             </Link>
-            <Link to="/proposal" className={classes.menuLink}>
+            <Link to="/request" className={classes.menuLink}>
               <ListItem button onClick={handleDrawerClose}>
                 <ListItemText primary="Request" />
               </ListItem>

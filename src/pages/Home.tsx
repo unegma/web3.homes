@@ -37,7 +37,7 @@ export default function Home(): JSX.Element {
           <sub>(Take care when using your domain name with some services such as exchanges).</sub>
         </Typography>
         <br/>
-        <Button variant="contained" color="primary" href="/proposal">
+        <Button variant="contained" color="primary" href="/request">
           Get Started
         </Button>
       </Box>

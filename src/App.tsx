@@ -80,7 +80,7 @@ function App() {
 
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/proposal" component={PageOne}/>
+            <Route exact path="/request" component={PageOne}/>
             <Route exact path="/about" component={About}/>
             <Route exact path="/wallet" component={WalletPage}/>
             <Redirect to="/"/>
