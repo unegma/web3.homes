@@ -51,7 +51,7 @@ const useStyles2 = makeStyles((theme: Theme) =>
 
 
 export default function DonateButton() {
-  const { account } = useWeb3React();
+  const { account, library } = useWeb3React();
   const [modalOpen, setModalOpen] = useState(false);
   const [ethDonation, setEthDonation] = useState<number>(1);
   const classes = useStyles();
@@ -71,6 +71,20 @@ export default function DonateButton() {
     setEthDonation(value);
   };
 
+  const sendTransaction = () => {
+    library
+      .getSigner(account)
+      .signMessage(`This will be the value ${ethDonation}ETH`)
+      .then((signature: any) => {
+        alert('Thanks');
+        setModalOpen(false);
+      })
+      .catch((error: any) => {
+        alert('Error');
+        setModalOpen(false);
+      })
+  };
+
   return (
     <>
       <Modal
@@ -78,7 +92,7 @@ export default function DonateButton() {
         onClose={hideModal}
       >
         <div style={modalStyle} className={`modalBoxContainer ${classes2.paper}`} >
-          <h2 className="modalTitle">Choose Amount</h2>
+          <h2 className="modalTitle">Choose Amount (Eth)</h2>
 
           <FormControl fullWidth className={classes.margin} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
@@ -92,7 +106,7 @@ export default function DonateButton() {
             />
           </FormControl>
 
-          <Button className="donateButton" variant="contained" color="primary" onClick={showModal}>
+          <Button className="donateButton" variant="contained" color="primary" onClick={sendTransaction}>
             Donate
           </Button>
         </div>
