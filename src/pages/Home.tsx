@@ -12,7 +12,7 @@ export default function Home(): JSX.Element {
         </Typography>
 
         <Typography  variant="h4">
-          Finding Homes for Web3 Wallet Addresses.
+          Finding Homes for Web3 Wallets.
         </Typography>
 
         <Typography className="italic error" >
