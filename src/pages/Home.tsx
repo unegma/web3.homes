@@ -20,8 +20,8 @@ export default function Home(): JSX.Element {
         </Typography>
         {/*<Typography className="">Your one stop shop for on-boarding into the Web3 ecosystem.</Typography>*/}
         <Typography className="">
-          When you want a parcel delivered, you use:<br/>
-          Your address, not your GPS co-ordinates.
+          When you want a parcel delivered, do you give:<br/>
+          Your address, or your GPS co-ordinates..?
           <br/><br/>
         </Typography>
         <Typography className="">
