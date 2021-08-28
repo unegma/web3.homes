@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
           <b>It should be like this on the blockchain too!</b><br/><br/>
         </Typography>
         <Typography noWrap>
-          Let's send 1ETH to: <a href="#">unegma.eth</a><br/>
+          Send 1ETH to: <a href="#">unegma.eth</a><br/>
           (Not to: <a href="#">0xEF9D542Cd93c6300b5BB755dff4033Eb0c8f8e01</a>)
         </Typography>
         <Typography>
