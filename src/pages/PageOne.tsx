@@ -92,7 +92,7 @@ export default function PageOne(): JSX.Element {
 
           <Typography className="">
             Please include as much detail as possible. We will get in touch if any details are missing.
-            See <Link to="/about" className="enterButton">here for more info.</Link>
+            See <Link to="/about" className="">here for more info.</Link>
           </Typography>
 
           <br/>
