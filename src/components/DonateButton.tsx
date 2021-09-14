@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { useWeb3React } from "@web3-react/core";
 import {Button, FormControl, InputAdornment, InputLabel, Modal, OutlinedInput, Typography} from "@material-ui/core";
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import { ethers } from "ethers";
+import {sign} from "node:crypto";
 
 function getModalStyle() {
   const top = 50;
@@ -74,13 +76,19 @@ export default function DonateButton() {
   const sendTransaction = () => {
     library
       .getSigner(account)
-      .signMessage(`This will be the value ${ethDonation}ETH`)
+      .sendTransaction({
+        to: "0xEF9D542Cd93c6300b5BB755dff4033Eb0c8f8e01",
+        value: ethers.utils.parseEther(ethDonation.toString())
+      })
+      // .signMessage(`This will be the value ${ethDonation}ETH`)
       .then((signature: any) => {
         alert('Thanks');
+        console.log(signature);
         setModalOpen(false);
       })
       .catch((error: any) => {
         alert('Error');
+        console.log(error);
         setModalOpen(false);
       })
   };
